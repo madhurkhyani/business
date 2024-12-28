@@ -1,0 +1,79 @@
+/* Basic styling for the page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* Styling the table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  background-color: white;
+}
+
+/* Scrollable container for the table */
+.table-container {
+  max-height: 400px; /* Set the maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc;
+}
+
+/* Table header styling */
+.data-table th {
+  background-color: #f2f2f2; /* Light gray header background */
+  color: #333;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Decrease width of the Primary ID column */
+.data-table th:nth-child(1),
+.data-table td:nth-child(1) {
+  width: 15%; /* Adjust this value as needed */
+}
+
+/* Table row and cell styling */
+.data-table td {
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  color: #555;
+  text-align: center;
+}
+
+/* Alternating row background color */
+.data-table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Slightly darker gray for even rows */
+}
+
+.data-table tr:nth-child(odd) {
+  background-color: #ffffff; /* White background for odd rows */
+}
+.down-mid-button {
+  position: absolute;
+
+  background-color: #808080;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.moreButton {
+  padding-bottom: 70px;
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+}

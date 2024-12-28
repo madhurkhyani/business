@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Management</title>
+    <link rel="stylesheet" href="{% static 'home/tempp.css' %}">
+</head>
+<body>
+    <body class="body">
+    <div class="container full-page">
+      <nav class="nav">
+        <a href="#" class="nav__brand w-inline-block"><img width="19" loading="lazy" alt="" src="{% static 'home/images/logo.png' %}" class="image" /></a><div class="nav__links">
+          <a href="mailto:hello@devtalk.com" class="button-small-outline hidden-phone w-inline-block"><div class="text-small">Home</div></a><a href="mailto:hello@devtalk.com" class="button-small-outline hidden-phone w-inline-block"><div class="text-small">Contact US</div></a><a href="mailto:hello@devtalk.com" class="button-small-outline hidden-phone w-inline-block"><div class="text-small">Explore</div></a>
+        </div>
+      </nav>
+    </div>
+    <section class="section">
+      <div class="features">
+        <a href="{% url 'feature123_page' 'cash_in_page' %}" class="link-block cards w-inline-block">
+          <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="" class="image-3" /><div>
+            <div class="text-block">CASH IN</div>
+          </div>
+        </a><a href="{% url 'feature123_page' 'cash_out_page' %}" class="link-block cards w-inline-block">
+          <img loading="lazy" src="{% static 'home/images/cashout.png' %}" alt="" class="image-3" /><div>
+            <div class="text-block">CASH OUT</div>
+          </div>
+        </a><a href="{% url 'feature123_page' 'sales_page' %}" class="link-block cards w-inline-block">
+          <img loading="lazy" src="{% static 'home/images/sales.png' %}" alt="" class="image-3" /><div class="div-block">
+            <div class="text-block">SALES</div>
+          </div>
+        </a><a href="{% url 'employee_page'  %}" class="link-block cards w-inline-block">
+          <img loading="lazy" src="{% static 'home/images/employess.png' %}" alt="" class="image-3" /><div>
+            <div class="text-block">EMPLOYEE</div>
+          </div>
+        </a><a href="{% url 'soon'  %}" class="link-block cards w-inline-block">
+          <img loading="lazy" src="{% static 'home/images/inventory.png' %}" alt="" class="image-3" /><div>
+            <div class="text-block">INVENTORY</div>
+          </div>
+        </a><a href="{% url 'soon'  %}" class="link-block cards w-inline-block">
+          <img loading="lazy" src="{% static 'home/images/reciept.png' %}" alt="" class="image-3" /><div>
+            <div class="text-block">RECEIPT</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Details</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      position: relative;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 1200px;
+      height: 80vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+      top: -20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      transition: transform 0.2s;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    .card p {
+      margin: 5px 0;
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Buttons */
+    .top-left-btn,
+    .bottom-center-btn {
+     
+      background-color: #808080;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+    }
+
+    .top-left-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .bottom-center-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .top-left-btn:hover,
+    .bottom-center-btn:hover {
+      background-color: #eee;
+    }
+
+    /* Scrollbar styles */
+    .container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 10px;
+    }
+
+    .container::-webkit-scrollbar-track {
+      background-color: #ddd;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="top-left-btn">Top Left Button</button>
+  <div class="container">
+    <div class="grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 1">
+        <h3>John Doe</h3>
+        <p>Position: Software Engineer</p>
+        <p>Department: IT</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 2">
+        <h3>Jane Smith</h3>
+        <p>Position: Project Manager</p>
+        <p>Department: Operations</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 3">
+        <h3>Robert Johnson</h3>
+        <p>Position: UX Designer</p>
+        <p>Department: Design</p>
+      </div>
+
+      <!-- Additional Cards -->
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 4">
+        <h3>Emily Brown</h3>
+        <p>Position: Data Analyst</p>
+        <p>Department: Marketing</p>
+      </div>
+
+      <div class="card">
+        <img loading="lazy" src="{% static 'home/images/cashin.png' %}" alt="Employee 5">
+        <h3>Michael Wilson</h3>
+        <p>Position: HR Specialist</p>
+        <p>Department: HR</p>
+      </div>
+
+      <!-- Add more cards as needed -->
+    </div>
+  </div>
+  <button class="bottom-center-btn">Bottom Center Button</button>
+
+
+</body>
+</html>

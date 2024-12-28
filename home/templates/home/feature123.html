@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Transaction Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .transaction-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .transaction-form input,
+        .transaction-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .transaction-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #808080;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .transaction-form button:hover {
+            background-color: #666666;
+        }
+
+        .transaction-list {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .transaction-list h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .transaction-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .transaction-list li {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+        }
+
+        .transaction-list li:nth-child(even) {
+            background-color: #e0e0e0;
+        }
+
+        /* Previous Transactions Button */
+        .top-right-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #808080;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .top-right-button:hover {
+            background-color: #666666;
+        }
+        .top-left-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #808080;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .top-left-button:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Previous Transactions Button -->
+    <a href="{% url 'previous_transaction' info.slug %}"><button class="top-right-button" onclick="scrollToTransactions()">Previous {{info.name}}</button></a>
+    <a href="{% url 'home_page'  %}"><button class="top-left-button" onclick="scrollToTransactions()">Main Menu </button></a>
+    
+    <h1>{{info.title}}</h1>
+
+    <!-- Transaction Input Form -->
+    <div class="transaction-form">
+        {% comment %} <input type="number" id="amount" placeholder="Enter amount" required> {% endcomment %}
+        {% comment %} <textarea id="description" rows="3" placeholder="Enter {{info.name}} description" required></textarea> {% endcomment %}
+        {% comment %} <button onclick="addTransaction()">Submit Transaction</button> {% endcomment %}
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            {{ field.label_tag }}
+            {{ field }}
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Transaction List -->
+    <div class="transaction-list" id="transactions">
+        <h3>Previously Entered {{info.name}}</h3>
+        <ul id="transactionList">
+            <!-- Transactions will appear here -->
+        </ul>
+    </div>
+
+    <script>
+        const transactionList = document.getElementById('transactionList');
+
+        function addTransaction() {
+            const amount = document.getElementById('amount').value;
+            const description = document.getElementById('description').value;
+
+            if (amount && description) {
+                const listItem = document.createElement('li');
+                listItem.textContent = `Amount: ₹${amount} - Description: ${description}`;
+                transactionList.appendChild(listItem);
+
+                // Clear the input fields
+                document.getElementById('amount').value = '';
+                document.getElementById('description').value = '';
+            } else {
+                alert('Please enter both amount and description');
+            }
+        }
+
+        function scrollToTransactions() {
+            document.getElementById('transactions').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+
+</body>
+
+</html>

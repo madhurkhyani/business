@@ -1,0 +1,117 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Header Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.cta .btn {
+    background-color: #007BFF;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Main Section */
+main {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 15px; /* Reduce gap between items to fit them on the screen */
+    max-height: 100vh; /* Make sure grid fits in the viewport */
+    overflow-y: auto; /* If necessary, allow vertical scroll */
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px 10px; /* Adjust padding */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 220px; /* Boxy shape */
+}
+
+/* Increase Icon Size without increasing Grid Item Size */
+.grid-item .icon {
+    width: 150px; /* Even larger icon size */
+    height: 150px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    object-fit: contain; /* Ensure the image scales inside the box */
+}
+
+.grid-item p {
+    font-size: 1.2em;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Hover Effect */
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+
+    .grid-item {
+        height: auto;
+    }
+}

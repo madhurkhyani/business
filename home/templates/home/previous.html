@@ -1,0 +1,174 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <style>
+      /* Basic styling for the page */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      /* Styling the table */
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+        background-color: white;
+      }
+
+      /* Scrollable container for the table */
+      .table-container {
+        max-height: 400px; /* Set the maximum height for scrolling */
+        overflow-y: auto; /* Enable vertical scrolling */
+        border: 1px solid #ccc;
+      }
+
+      /* Table header styling */
+      .data-table th {
+        background-color: #f2f2f2; /* Light gray header background */
+        color: #333;
+        padding: 12px 15px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+
+      /* Decrease width of the Primary ID column */
+      .data-table th:nth-child(1),
+      .data-table td:nth-child(1) {
+        width: 15%; /* Adjust this value as needed */
+      }
+
+      /* Table row and cell styling */
+      .data-table td {
+        padding: 12px 15px;
+        border: 1px solid #ccc;
+        color: #555;
+        text-align: center;
+      }
+
+      /* Alternating row background color */
+      .data-table tr:nth-child(even) {
+        background-color: #f9f9f9; /* Slightly darker gray for even rows */
+      }
+
+      .data-table tr:nth-child(odd) {
+        background-color: #ffffff; /* White background for odd rows */
+      }
+      .down-mid-button {
+        position: absolute;
+        
+        background-color: #808080;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    .moreButton {
+        padding-bottom: 70px;
+        position: absolute;
+        left: 50%;
+        bottom: 50px;
+        transform: translateX(-50%);
+    }
+    </style>
+  </head>
+  <body>
+    <h1>{{title}}</h1>
+
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>DATE</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transaction in data %}
+          <tr id="row-{{ transaction.id }}">
+        <td>{{ transaction.date }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.description }}</td>
+        <td>
+          <!-- Pass model name and ID dynamically -->
+          <button class="delete-button" onclick="deleteTransaction('{{slug}}', '{{ transaction.id }}')">
+            Delete
+          </button>
+        </td>
+      </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <script>
+      function deleteTransaction(slug, transactionId) {
+        // Confirm before deleting
+        if (!confirm("Are you sure you want to delete this transaction?")) {
+            return;
+        }
+    
+        // Prepare the DELETE request
+        fetch(`/delete-object/${slug}/${transactionId}/`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': getCSRFToken(),  // Include CSRF token
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to delete the transaction.");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            alert(data.message);  // Show success message
+    
+            // Remove the row from the table
+            const row = document.getElementById(`row-${transactionId}`);
+            if (row) {
+                row.remove();
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            alert("An error occurred while deleting the transaction.");
+        });
+    }
+      
+      // Helper function to get CSRF token from cookies
+      function getCSRFToken() {
+        const cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            const [name, value] = cookie.trim().split("=");
+            if (name === "csrftoken") {
+                return decodeURIComponent(value);
+            }
+        }
+        return "";
+    }
+    
+    </script>
+    
+    <a href="{% url 'home_page'  %}" class="moreButton"><button class="down-mid-button">Main Menu </button></a>
+  </body>
+</html> 
+

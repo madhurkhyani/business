@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path("", views.home_page, name='home_page'),
     path("feature/<str:feature>", views.Features.as_view(), name='feature123_page'),

@@ -4,8 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Employee Details</title>
-    <link rel="stylesheet" href="{% static "employee/emp_page.css" %}"> 
+    <title>All Clients</title>
+    <link rel="stylesheet" href="{% static "client/client_page.css" %}"> 
   </head>
   <body>
     <a href="{% url 'home_page'  %}"
@@ -14,20 +14,19 @@
     <div class="container">
       <div class="grid">
         <!-- Card 1 -->
-      {% for info in employee_info %}
-      <a href="{% url 'employee_detail' info.id  %}" style="text-decoration: none;">
+      {% for info in client_info %}
+      {% comment %} <a href="{% url 'employee_detail' info.id  %}" style="text-decoration: none;"> {% endcomment %}
         <div class="card">
           <img loading="lazy" src="{{info.image.url }}" alt="Employee 1" />
           <h3>{{info.Name}}</h3>
-          <p>Salary: ₹ {{info.Salary}}</p>
-          <p>Joining Date: {{info.Joining_Date}}</p>
+          <p>Email: ₹ {{info.email}}</p>
+          <p>Company Name: {{info.Company_Name}}</p>
         </div>
         </a>
       {% endfor %}
       </div>
     </div>
-    <a href="{% url 'add_employee'  %}"
-      ><button class="bottom-center-btn">Add Employee</button></a
-    >
+    <a href="{% url 'add-client' %}">
+    <button class="bottom-center-btn">Add Client</button></a>
   </body>
 </html>

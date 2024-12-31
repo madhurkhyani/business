@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.transaction-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.transaction-form input,
+.transaction-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.transaction-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #808080;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.transaction-form button:hover {
+    background-color: #666666;
+}
+
+.transaction-list {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.transaction-list h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.transaction-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.transaction-list li {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.transaction-list li:nth-child(even) {
+    background-color: #e0e0e0;
+}
+
+/* Previous Transactions Button */
+.top-right-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #808080;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.top-right-button:hover {
+    background-color: #666666;
+}
+.top-left-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #808080;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.top-left-button:hover {
+    background-color: #666666;
+}

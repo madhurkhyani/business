@@ -5,6 +5,7 @@ from .models import Cash_in,Cash_out,Sales
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.apps import apps
+from client.models import ClientData
 
 # Dictionary mapping slugs to information and form classes
 temp = {
@@ -51,10 +52,12 @@ class Features(View):
 
         return render(request, "home/feature123.html", {
             "form": form,
-            "info": info
+            "info": info,
+            "clients": ClientData.objects.all()
         })
     
     def post(self, request, feature):
+        # Using the feature parameter instead of slug
         info = temp.get(feature)
 
         if not info:  # Handle case where feature is not found
@@ -64,20 +67,34 @@ class Features(View):
         form = form_class(request.POST)  # Instantiate the form with POST data
 
         if form.is_valid():  # Validate the form data
-            # Here you would typically save the data or process it as needed
-            # For example, if using a ModelForm, you might call form.save()
-            # For simple forms, you might just process the cleaned data
-            # Example: print(form.cleaned_data)
-         form.save()
-         return redirect('feature123_page', feature=feature)
-            # Redirect to a success page (you could change this to any URL)
-          # Change to your success URL
+            # Save the Cash_in object
+            cash_in = form.save()
 
-        # If the form is not valid, re-render the form with error messages
+            # Update the ledger in the ClientData model
+            if feature!="sales_page":
+                try:
+                    client = cash_in.client
+                    if hasattr(client, 'ledger'):
+                        if client.ledger is None:
+                            client.ledger = 0  # Initialize if null
+                        print(f"Client Ledger Before Update: {client.ledger}")
+                        print(f"Cash In Amount: {cash_in.amount}")
+                        if feature=="cash_in_page":
+                            client.ledger += cash_in.amount
+                        else:
+                            client.ledger -= cash_in.amount
+                        client.save()
+                        print(f"Client Ledger After Update: {client.ledger}")
+                    else:
+                        return HttpResponse("Ledger attribute not found in ClientData model", status=500)
+                except ClientData.DoesNotExist:
+                    return HttpResponse("Client not found", status=404)
+                        # If the form is not valid, re-render the form with error messages
         return render(request, "home/feature123.html", {
             "form": form,  # Pass the form with errors back to the template
             "info": info
         })
+    
 
 
 def previous_transaction(request,feature):

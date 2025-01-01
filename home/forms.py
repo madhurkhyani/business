@@ -4,12 +4,12 @@ from .models import Cash_in,Cash_out,Sales
 class Cash_in_form(forms.ModelForm):
     class Meta:
         model=Cash_in
-        fields = ['amount','description']
+        fields = ['amount','description','client']
 
 class Cash_out_form(forms.ModelForm):
     class Meta:
         model=Cash_out
-        fields = ['amount','description']
+        fields = ['amount','description','client']
 
 class Sales_form(forms.ModelForm):
     class Meta:

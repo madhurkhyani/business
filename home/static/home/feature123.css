@@ -1,62 +1,113 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    margin: 20px 0;
+    color: #2c3e50;
 }
 
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.top-right-button, .top-left-button {
+    position: absolute;
+    top: 20px;
+    padding: 10px 15px;
+}
+
+.top-right-button {
+    right: 20px;
+}
+
+.top-left-button {
+    left: 20px;
+}
+
+/* Form Styles */
 .transaction-form {
-    max-width: 400px;
+    max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-form label {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
 }
 
 .transaction-form input,
-.transaction-form textarea {
-    width: 94%;
+.transaction-form textarea,
+.transaction-form select {
+    width: 97%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
-.transaction-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #808080;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+.transaction-form textarea {
+    resize: none;
 }
 
-.transaction-form button:hover {
-    background-color: #666666;
+.transaction-form .dropdown-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+.add-client-button {
+    background-color: #2ecc71;
+    margin-left: auto;
+}
+
+.add-client-button:hover {
+    background-color: #27ae60;
+}
+
+/* Transaction List */
 .transaction-list {
     max-width: 600px;
-    margin: 30px auto;
-    background-color: #fff;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .transaction-list h3 {
-    color: #333;
     margin-bottom: 15px;
+    color: #2c3e50;
+    text-align: center;
 }
 
 .transaction-list ul {
@@ -65,47 +116,53 @@ h1 {
     margin: 0;
 }
 
-.transaction-list li {
+.transaction-list ul li {
     padding: 10px;
-    background-color: #f9f9f9;
     border-bottom: 1px solid #ddd;
-    color: #333;
-}
-
-.transaction-list li:nth-child(even) {
-    background-color: #e0e0e0;
-}
-
-/* Previous Transactions Button */
-.top-right-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #808080;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
     font-size: 14px;
 }
 
-.top-right-button:hover {
-    background-color: #666666;
-}
-.top-left-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #808080;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+.transaction-list ul li:last-child {
+    border-bottom: none;
 }
 
-.top-left-button:hover {
-    background-color: #666666;
+/* Modal Styles */
+#addClientModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#addClientModal .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#addClientModal .modal-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#addClientModal .modal-footer {
+    text-align: right;
+}
+
+.close-modal-button {
+    background-color: #e74c3c;
+}
+
+.close-modal-button:hover {
+    background-color: #c0392b;
 }

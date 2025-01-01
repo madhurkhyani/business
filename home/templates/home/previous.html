@@ -18,6 +18,7 @@
             <th>DATE</th>
             <th>Amount</th>
             <th>Description</th>
+            <th>Client</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -27,6 +28,7 @@
         <td>{{ transaction.date }}</td>
         <td>{{ transaction.amount }}</td>
         <td>{{ transaction.description }}</td>
+        <td>{{ transaction.client }}</td>
         <td>
           <!-- Pass model name and ID dynamically -->
           <button class="delete-button" onclick="deleteTransaction('{{slug}}', '{{ transaction.id }}')">

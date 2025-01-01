@@ -6,3 +6,6 @@ class ClientData(models.Model):
     image=models.ImageField(upload_to="images")
     email = models.EmailField()
     note = models.CharField(max_length=250, default="No Note yet!")
+
+    def __str__(self):
+        return self.Name

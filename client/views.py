@@ -9,7 +9,7 @@ class addClient(CreateView):
     template_name = "client/add-client.html"
     model = ClientData
     form_class = ClientForm
-    success_url="/clients/allclients"
+    success_url="/clients/addclient"
 
 
 class ClientPage(CreateView):

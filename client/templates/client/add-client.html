@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Details Form</title>
-    <link rel="stylesheet" href="{% static "employee/addemployee.css" %}"> 
+    <title>Client Details Form</title>
+    <link rel="stylesheet" href="{% static "client/addclient.css" %}"> 
 </head>
 <body>
     <div class="form-container">
-        <h1> Employee Details Form </h1>
+        <h1>Client Details Form</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
@@ -17,16 +17,16 @@
                 {{ form.Name }}
             </div>
             <div class="form-group">
+                {{ form.Company_Name.label_tag }}
+                {{ form.Company_Name }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group">
                 {{ form.image.label_tag }}
                 {{ form.image }}
-            </div>
-            <div class="form-group">
-                {{ form.Salary.label_tag }}
-                {{ form.Salary }}
-            </div>
-            <div class="form-group">
-                {{ form.Joining_Date.label_tag }}
-                {{ form.Joining_Date }}
             </div>
             <div class="form-group">
                 <input type="submit" value="Submit">

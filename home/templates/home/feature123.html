@@ -25,8 +25,8 @@
         <form method="post">
             {% csrf_token %}
             {% for field in form %}
-            {{ field.label_tag }}
-            {{ field }}
+                {{ field.label_tag }}
+                {{ field }}
             {% endfor %}
             <button type="submit">Submit</button>
         </form>

@@ -15,14 +15,14 @@
       <div class="grid">
         <!-- Card 1 -->
       {% for info in client_info %}
-      {% comment %} <a href="{% url 'employee_detail' info.id  %}" style="text-decoration: none;"> {% endcomment %}
+      <a href="{% url 'client_detail' info.id  %}" style="text-decoration: none;">
         <div class="card">
           <img loading="lazy" src="{{info.image.url }}" alt="Employee 1" />
           <h3>{{info.Name}}</h3>
           <p>Email: {{info.email}}</p>
           <p>Company Name: {{info.Company_Name}}</p>
         </div>
-        </a>
+      </a>
       {% endfor %}
       </div>
     </div>

@@ -1,8 +1,8 @@
-from django.shortcuts import render
 from django.views import View
 from django.views.generic.edit import CreateView
 from .forms import ClientForm
 from .models import ClientData
+from django.shortcuts import render,get_object_or_404,redirect
 # Create your views here.
 
 class addClient(CreateView):
@@ -22,3 +22,8 @@ class ClientPage(CreateView):
         context = super().get_context_data(**kwargs)
         context['client_info'] = ClientData.objects.all()  # Fetch all records
         return context
+
+def client_detail(request,client_id):
+    info=get_object_or_404(ClientData,id=client_id)
+    return render(request, "client/client_detail.html",{"client_info":info
+    })

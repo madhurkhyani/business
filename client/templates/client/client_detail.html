@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="{% static "client/client_detail.css" %}"> 
+</head>
+<body>
+    <div class="container">
+        <h1>Client Details</h1>
+        <div class="employee-info">
+            <img src="{{ client_info.image.url }}" alt="{{ client_info.Name }}">
+            <p><span class="label">Name:</span> {{ client_info.Name }}</p>
+            <p><span class="label">Comapany Name:</span> {{ client_info.Company_Name }}</p>
+            <p><span class="label">Email:</span> {{ client_info.email }}</p>
+            <p><span class="label">Ledger:</span> 1000</p>
+        </div>
+        <div class="note-section">
+            <p><strong>Note:</strong> {{ client_info.note }}</p>
+        </div>
+</body>
+</html>

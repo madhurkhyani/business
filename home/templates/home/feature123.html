@@ -19,9 +19,6 @@
 
     <!-- Transaction Input Form -->
     <div class="transaction-form">
-        {% comment %} <input type="number" id="amount" placeholder="Enter amount" required> {% endcomment %}
-        {% comment %} <textarea id="description" rows="3" placeholder="Enter {{info.name}} description" required></textarea> {% endcomment %}
-        {% comment %} <button onclick="addTransaction()">Submit Transaction</button> {% endcomment %}
         <form method="post">
             {% csrf_token %}
             {% for field in form %}
